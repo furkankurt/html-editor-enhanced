@@ -726,43 +726,25 @@ class ToolbarWidgetState extends State<ToolbarWidget> {
                     value: 1,
                     child: PointerInterceptor(
                         child: Text(
-                            "${_fontSizeUnitSelectedItem == "px" ? "11" : "8"} $_fontSizeUnitSelectedItem")),
+                            "${_fontSizeUnitSelectedItem == "px" ? "12" : "10"} $_fontSizeUnitSelectedItem")),
                   ),
                   CustomDropdownMenuItem(
                     value: 2,
                     child: PointerInterceptor(
                         child: Text(
-                            "${_fontSizeUnitSelectedItem == "px" ? "13" : "10"} $_fontSizeUnitSelectedItem")),
+                            "${_fontSizeUnitSelectedItem == "px" ? "14" : "12"} $_fontSizeUnitSelectedItem")),
                   ),
                   CustomDropdownMenuItem(
                     value: 3,
                     child: PointerInterceptor(
                         child: Text(
-                            "${_fontSizeUnitSelectedItem == "px" ? "16" : "12"} $_fontSizeUnitSelectedItem")),
+                            "${_fontSizeUnitSelectedItem == "px" ? "16" : "14"} $_fontSizeUnitSelectedItem")),
                   ),
                   CustomDropdownMenuItem(
                     value: 4,
                     child: PointerInterceptor(
                         child: Text(
-                            "${_fontSizeUnitSelectedItem == "px" ? "19" : "14"} $_fontSizeUnitSelectedItem")),
-                  ),
-                  CustomDropdownMenuItem(
-                    value: 5,
-                    child: PointerInterceptor(
-                        child: Text(
-                            "${_fontSizeUnitSelectedItem == "px" ? "24" : "18"} $_fontSizeUnitSelectedItem")),
-                  ),
-                  CustomDropdownMenuItem(
-                    value: 6,
-                    child: PointerInterceptor(
-                        child: Text(
-                            "${_fontSizeUnitSelectedItem == "px" ? "32" : "24"} $_fontSizeUnitSelectedItem")),
-                  ),
-                  CustomDropdownMenuItem(
-                    value: 7,
-                    child: PointerInterceptor(
-                        child: Text(
-                            "${_fontSizeUnitSelectedItem == "px" ? "48" : "36"} $_fontSizeUnitSelectedItem")),
+                            "${_fontSizeUnitSelectedItem == "px" ? "18" : "16"} $_fontSizeUnitSelectedItem")),
                   ),
                 ],
                 value: _fontSizeSelectedItem,
@@ -786,25 +768,16 @@ class ToolbarWidgetState extends State<ToolbarWidget> {
                     if (proceed) {
                       switch (intChanged) {
                         case 1:
-                          _actualFontSizeSelectedItem = 11;
+                          _actualFontSizeSelectedItem = 10;
                           break;
                         case 2:
-                          _actualFontSizeSelectedItem = 13;
+                          _actualFontSizeSelectedItem = 14;
                           break;
                         case 3:
-                          _actualFontSizeSelectedItem = 16;
+                          _actualFontSizeSelectedItem = 12;
                           break;
                         case 4:
-                          _actualFontSizeSelectedItem = 19;
-                          break;
-                        case 5:
-                          _actualFontSizeSelectedItem = 24;
-                          break;
-                        case 6:
-                          _actualFontSizeSelectedItem = 32;
-                          break;
-                        case 7:
-                          _actualFontSizeSelectedItem = 48;
+                          _actualFontSizeSelectedItem = 16;
                           break;
                       }
                       widget.controller.execCommand('fontSize',
@@ -1046,10 +1019,12 @@ class ToolbarWidgetState extends State<ToolbarWidget> {
             void updateStatus(Color? color) {
               setState(mounted, this.setState, () {
                 _colorSelected[index] = !_colorSelected[index];
-                if (color != null && t.getIcons()[index].icon == Icons.format_color_text) {
+                if (color != null &&
+                    t.getIcons()[index].icon == Icons.format_color_text) {
                   _foreColorSelected = color;
                 }
-                if (color != null && t.getIcons()[index].icon == Icons.format_color_fill) {
+                if (color != null &&
+                    t.getIcons()[index].icon == Icons.format_color_fill) {
                   _backColorSelected = color;
                 }
               });
@@ -1117,7 +1092,7 @@ class ToolbarWidgetState extends State<ToolbarWidget> {
                             onColorChanged: (color) {
                               newColor = color;
                             },
-                            title: Text('Choose a Color',
+                            title: Text('Renk Seçin',
                                 style: Theme.of(context).textTheme.headline6),
                             width: 40,
                             height: 40,
@@ -1126,14 +1101,14 @@ class ToolbarWidgetState extends State<ToolbarWidget> {
                             borderRadius: 0,
                             wheelDiameter: 165,
                             enableOpacity: false,
-                            showColorCode: true,
+                            showColorCode: false,
                             colorCodeHasColor: true,
                             pickersEnabled: <ColorPickerType, bool>{
                               ColorPickerType.wheel: true,
                             },
                             copyPasteBehavior:
                                 const ColorPickerCopyPasteBehavior(
-                              parseShortHexCode: true,
+                              parseShortHexCode: false,
                             ),
                             actionButtons: const ColorPickerActionButtons(
                               dialogActionButtons: true,
@@ -1144,7 +1119,7 @@ class ToolbarWidgetState extends State<ToolbarWidget> {
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
-                              child: Text('Cancel'),
+                              child: Text('İptal'),
                             ),
                             TextButton(
                                 onPressed: () {
@@ -1172,7 +1147,7 @@ class ToolbarWidgetState extends State<ToolbarWidget> {
                                   }
                                   Navigator.of(context).pop();
                                 },
-                                child: Text('Reset to default color')),
+                                child: Text('Varsayılan')),
                             TextButton(
                               onPressed: () {
                                 if (t.getIcons()[index].icon ==
@@ -1203,7 +1178,7 @@ class ToolbarWidgetState extends State<ToolbarWidget> {
                                 });
                                 Navigator.of(context).pop();
                               },
-                              child: Text('Set color'),
+                              child: Text('Uygula'),
                             )
                           ],
                         ),
